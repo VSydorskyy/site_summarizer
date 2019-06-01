@@ -1,7 +1,7 @@
 from flask import request, jsonify, Response, Flask
 from flask_cors import CORS
 
-from nlp.summarizer import summarize_pipeline
+from summarizer_service.nlp.summarizer import summarize_pipeline
 
 app = Flask(__name__)
 CORS(app)
@@ -23,13 +23,9 @@ def apply():
 
     site_summary = summarize_pipeline(html, sent_num)
 
-    return jsonify({'generated_description': site_summary, 'indian_description': '', 'status': 'ok'})
+    return jsonify({'generated_description': site_summary, 'additional_description': '', 'status': 'ok'})
 
 
 @app.route('/send', methods=['POST'])
 def send():
     return Response(status=400)
-
-
-# if __name__ == '__main__':
-#     app.run()

@@ -1,6 +1,6 @@
 from waitress import serve
 
-from app import app
+from summarizer_service.app import app
 
 
 if __name__ == '__main__':
